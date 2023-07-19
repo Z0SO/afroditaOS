@@ -2,8 +2,10 @@
 #include <stdint.h>
 #include "bootloader/bootservices.h"
 #include "util/string.h"
+#include "memory/memory.h"
 
-// // defino la funcion print que le voy a pasar un puntero
+
+// // funcion print toma puntero
 // void print(const char* str) {
 
 //     // en esta llamada voy a hacer un puntero que recibe una direccion de memoria a una funcion
@@ -22,8 +24,15 @@ void hlt()
 
 void _start()
 {
-    printf("AfroditaOS\n bootloader -> %s\n version = %s\n",
-           get_bootloader_name(),
-           get_bootloader_version());
+
+    init_memory();
+
+    printf("sxlenOS\n bootloader -> %s\n version = %s\n",
+        get_bootloader_name(),
+        get_bootloader_version()
+    );
+
+    printf("Kernel looping...\n");
+
     hlt();
 }
